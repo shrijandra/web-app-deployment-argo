@@ -24,7 +24,7 @@ pipeline {
                    echo "${IMAGE_TAG}"
                    echo "${APP_NAME}"
                    cat deployment.yaml
-                   sed -i 's/'${APP_NAME}.*/'${APP_NAME}':'${IMAGE_TAG}'/g' deployment.yaml
+                   sed -i 's/'${APP_NAME}'.*/'${APP_NAME}':'${IMAGE_TAG}'/g' deployment.yaml
                    cat deployment.yaml
                 '''
             }
