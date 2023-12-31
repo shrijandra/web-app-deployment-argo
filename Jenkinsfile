@@ -19,22 +19,22 @@ pipeline {
 
         stage("Update the Deployment Tags") {
             steps {
-                sh """
+                sh '''
                    cat deployment.yaml
                    sed -i 's/${APP_NAME}.*/${APP_NAME}:${IMAGE_TAG}/g' deployment.yaml
                    cat deployment.yaml
-                """
+                '''
             }
         }
 
         stage("Push the changed deployment file to Git") {
             steps {
-                sh """
+                sh '''
                    git config --global user.name "shrijandra"
                    git config --global user.email "er.shrijandra@gmail.com"
                    git add deployment.yaml
                    git commit -m "Updated Deployment Manifest"
-                """
+                '''
                 withCredentials([gitUsernamePassword(credentialsId: 'gitid', gitToolName: 'Default')]) {
                   sh "git push https://github.com/shrijandra/web-app-deployment-argo.git main"
                 }
