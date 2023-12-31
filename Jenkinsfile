@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
               APP_NAME = "register-app-pipeline"
+              DOCKER_USER = "shrijandra"
     }
 
     stages {
