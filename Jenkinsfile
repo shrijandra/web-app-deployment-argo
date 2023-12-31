@@ -39,7 +39,7 @@ pipeline {
                    git commit -m "Updated Deployment Manifest"
                 '''
                 withCredentials([gitUsernamePassword(credentialsId: 'gitid', gitToolName: 'Default')]) {
-                  sh "git push https://github.com/shrijandra/web-app-deployment-argo.git main"
+                  sh 'git push https://github.com/shrijandra/web-app-deployment-argo.git main'
                 }
             }
         }
