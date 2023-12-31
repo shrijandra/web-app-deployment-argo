@@ -21,8 +21,9 @@ pipeline {
         stage("Update the Deployment Tags") {
             steps {
                 sh '''
+                   echo ${IMAGE_TAG}
                    cat deployment.yaml
-                   sed -i 's/${DOCKER_USER}.*/${APP_NAME}:${IMAGE_TAG}/g' deployment.yaml
+                   sed -i 's/${APP_NAME}.*/${APP_NAME}:${IMAGE_TAG}/g' deployment.yaml
                    cat deployment.yaml
                 '''
             }
